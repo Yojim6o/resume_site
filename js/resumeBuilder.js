@@ -5,8 +5,8 @@ var bio = {
 		"mobile": "316-209-4526",
 		"email": "jgs2017@gmail.com",
 		"github": "Yojim6o",
-		"blog": "none",
-		"twitter": "none",
+		"blog": "",
+		"twitter": "",
 		"location": "Wichita, Kansas"
 	},
 	"welcomeMessage": "Experienced entrepreneur and financial consultant with a background in commercial lending and real estate investing, with a capability to effectively communicate business solutions to clients and partners.",
@@ -31,10 +31,17 @@ var formattedLocation = HTMLlocation.replace("%data%", bio.contacts.location);
 
 $("#topContacts").append(formattedMobile);
 $("#topContacts").append(formattedEmail);
-$("#topContacts").append(formattedTwitter);
+//$("#topContacts").append(formattedTwitter);
 $("#topContacts").append(formattedGithub);
-$("#topContacts").append(formattedBlog);
+//$("#topContacts").append(formattedBlog);
 $("#topContacts").append(formattedLocation);
+
+$("#footerContacts").append(formattedMobile);
+$("#footerContacts").append(formattedEmail);
+//$("#topContacts").append(formattedTwitter);
+$("#footerContacts").append(formattedGithub);
+//$("#topContacts").append(formattedBlog);
+$("#footerContacts").append(formattedLocation);
 
 var formattedBioPic = HTMLbioPic.replace("%data%", bio.bioPic);
 $("#header").append(formattedBioPic);
@@ -46,15 +53,16 @@ var education = {
 	"schools": [
 		{
 			"name": "Ad Astra Academy",
-			"location": "Wichita, KS",
-			"degree": ["HTML & CSS 1", " HTML & CSS 2", " JavaScript 1", " Javascript 2 with jQuery", " Version control with Git"],
+			"city": "Wichita, KS",
+			"degree": "",
+			"majors": "",
 			"dates": 2015,
 			"url": "https://adastraacademy.com"
 		},
 		{
 			"name": "Newman University",
-			"location": "Wichita, KS",
-			"degree": "BA English",
+			"City": "Wichita, KS",
+			"degree": "Bachelors",
 			"majors": ["English"],
 			"dates": 2007,
 			"url": "https://newmanu.edu"
@@ -76,7 +84,15 @@ var work = {
 			"employer": "Credit Union of America",
 			"title": "Commercial Services Specialist",
 			"dates": "January 2007 - Present",
+			"location": "Wichita, KS",
 			"description": "Assistant relationship lender for the company's commercial loan portfolio. Administrator and credit analyst of all commercial credit facilities."
+		},
+		{
+			"employer": "S Props LLC",
+			"title": "Managing Member",
+			"dates": "April 2009 - Present",
+			"location": "Wichita, KS",
+			"description": ""
 		}
 	]
 }
@@ -115,6 +131,8 @@ function displayWork() {
 		$(".work-entry:last").append(formattedEmployerTitle);
 		var formattedDates = HTMLworkDates.replace("%data%", work.jobs[job].dates);
 		$(".work-entry:last").append(formattedDates);
+		var formattedLocation = HTMLworkLocation.replace("%data%", work.jobs[job].location);
+		$(".work-entry:last").append(formattedLocation);
 		var formattedDescription = HTMLworkDescription.replace("%data%", work.jobs[job].description);
 		$(".work-entry:last").append(formattedDescription);
 	}
@@ -156,8 +174,10 @@ function displayEducation() {
 		var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
 		$(".education-entry:last").append(formattedDates);
 	}
+}
+function displayCourses() {
 	for (course in education.onlineCourses) {
-		$("#education").append(HTMLschoolStart);
+		$(".education-entry:last").append(HTMLonlineClasses);
 		var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
 		$(".education-entry:last").append(formattedTitle);
 		var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
@@ -170,6 +190,7 @@ function displayEducation() {
 }
 
 displayEducation();
+displayCourses();
 
 function inName(name) {
 	name = name.trim().split(" ");
@@ -182,4 +203,4 @@ function inName(name) {
 
 $("#main").append(internationalizeButton);
 
-//$("#mapDiv").append(googleMap);
+$("#mapDiv").append(googleMap);
