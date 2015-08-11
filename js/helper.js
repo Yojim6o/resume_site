@@ -98,7 +98,7 @@ Start here! initializeMap() is called when page is loaded.
 function initializeMap() {
 
   var locations;
-  zoon = 8;
+  zoom = 8;
   var mapOptions = {
     disableDefaultUI: true
   };

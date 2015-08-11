@@ -182,4 +182,4 @@ function inName(name) {
 
 $("#main").append(internationalizeButton);
 
-$("#mapDiv").append(googleMap);
+//$("#mapDiv").append(googleMap);
