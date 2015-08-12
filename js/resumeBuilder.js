@@ -11,7 +11,7 @@ var bio = {
 	},
 	"welcomeMessage": "Experienced entrepreneur and financial consultant with a background in commercial lending and real estate investing, with a capability to effectively communicate business solutions to clients and partners.",
 	"skills": [
-		"entrepreneurship", "financial consulting", "front-end web development", "organizational tools"
+		"Entrepreneurship", "Front-End Web Development", "Financial Consulting", "Organizational Tools", "HTML", "CSS", "JavaScript", "jQuery"
 	],
 	"bioPic": "images/profilepic.jpg"
 }
@@ -52,18 +52,18 @@ $("#header").append(formattedWelcome);
 var education = {
 	"schools": [
 		{
-			"name": "Ad Astra Academy",
+			"name": "Ad Astra Academy - HTML, CSS, JavaScript, jQuery, Git",
 			"city": "Wichita, KS",
-			"degree": "",
-			"majors": "",
+			"degree": "HTML, CSS, JavaScript, jQuery, Git",
+			"major": "CS Workshops",
 			"dates": 2015,
 			"url": "https://adastraacademy.com"
 		},
 		{
-			"name": "Newman University",
-			"City": "Wichita, KS",
-			"degree": "Bachelors",
-			"majors": ["English"],
+			"name": "Newman University - Bachelors",
+			"city": "Wichita, KS",
+			"degree": "BA",
+			"major": ["English"],
 			"dates": 2007,
 			"url": "https://newmanu.edu"
 		}
@@ -92,7 +92,7 @@ var work = {
 			"title": "Managing Member",
 			"dates": "April 2009 - Present",
 			"location": "Wichita, KS",
-			"description": ""
+			"description": "I began investing in rental properties as soon as I finished college, and created a business that specializes in multi-unit residential rental properties in the Wichita, KS area.  I regularly engage in negotiations with fellow investors to create scenarios that benefit all parties involved. During my startup phase, I operated the rental units myself by interviewing prospective tenants and managing the day-to-day maintenance requests.  However, I’ve since grown the business to self-sustain by hiring out the management to trusted entities who I’ve personally developed a working relationship with."
 		}
 	]
 }
@@ -104,7 +104,7 @@ var projects = {
 			"dates": "2015",
 			"description": "A website of my work.",
 			"images": [
-				""
+				"images/design-projects.jpg"
 			]
 		}
 	]
@@ -119,6 +119,14 @@ if(bio.skills.length > 0) {
 	formattedSkill = HTMLskills.replace("%data%", bio.skills[2]);
 	$("#skills").append(formattedSkill);
 	formattedSkill = HTMLskills.replace("%data%", bio.skills[3]);
+	$("#skills").append(formattedSkill);
+	formattedSkill = HTMLskills.replace("%data%", bio.skills[4]);
+	$("#skills").append(formattedSkill);
+	formattedSkill = HTMLskills.replace("%data%", bio.skills[5]);
+	$("#skills").append(formattedSkill);
+	formattedSkill = HTMLskills.replace("%data%", bio.skills[6]);
+	$("#skills").append(formattedSkill);
+	formattedSkill = HTMLskills.replace("%data%", bio.skills[7]);
 	$("#skills").append(formattedSkill);
 }
 
@@ -169,19 +177,20 @@ function displayEducation() {
 		$("#education").append(HTMLschoolStart);
 		var formattedSchoolName = HTMLschoolName.replace("%data%", education.schools[school].name);
 		$(".education-entry:last").append(formattedSchoolName);
-		var formattedDegree = HTMLschoolDegree.replace("%data%", education.schools[school].degree);
-		$(".education-entry:last").append(formattedDegree);
 		var formattedDates = HTMLschoolDates.replace("%data%", education.schools[school].dates);
 		$(".education-entry:last").append(formattedDates);
+		var formattedLocation = HTMLschoolLocation.replace("%data%", education.schools[school].city);
+		$(".education-entry:last").append(formattedLocation);
+		var formattedMajor = HTMLschoolMajor.replace("%data%", education.schools[school].major);
+		$(".education-entry:last").append(formattedMajor);
 	}
 }
 function displayCourses() {
+	$(".education-entry:last").after(HTMLonlineClasses);
 	for (course in education.onlineCourses) {
-		$(".education-entry:last").append(HTMLonlineClasses);
+		$("#education").append(HTMLschoolStart);
 		var formattedTitle = HTMLonlineTitle.replace("%data%", education.onlineCourses[course].title);
 		$(".education-entry:last").append(formattedTitle);
-		var formattedSchool = HTMLonlineSchool.replace("%data%", education.onlineCourses[course].school);
-		$(".education-entry:last").append(formattedSchool);
 		var formattedDates = HTMLonlineDates.replace("%data%", education.onlineCourses[course].dates);
 		$(".education-entry:last").append(formattedDates);
 		var formattedURL = HTMLonlineURL.replace("%data%", education.onlineCourses[course].url);
