@@ -106,28 +106,16 @@ var projects = {
 	]
 };
 
-if(bio.skills.length > 0) {
+if(bio.skills.length) {
 	$header.append(HTMLskillsStart);
-	var formattedSkill = HTMLskills.replace(data, bio.skills[0]);
-	$('#skills').append(formattedSkill);
-	formattedSkill = HTMLskills.replace(data, bio.skills[1]);
-	$('#skills').append(formattedSkill);
-	formattedSkill = HTMLskills.replace(data, bio.skills[2]);
-	$('#skills').append(formattedSkill);
-	formattedSkill = HTMLskills.replace(data, bio.skills[3]);
-	$('#skills').append(formattedSkill);
-	formattedSkill = HTMLskills.replace(data, bio.skills[4]);
-	$('#skills').append(formattedSkill);
-	formattedSkill = HTMLskills.replace(data, bio.skills[5]);
-	$('#skills').append(formattedSkill);
-	formattedSkill = HTMLskills.replace(data, bio.skills[6]);
-	$('#skills').append(formattedSkill);
-	formattedSkill = HTMLskills.replace(data, bio.skills[7]);
-	$('#skills').append(formattedSkill);
+	for (var i = 0; i < bio.skills.length; i++) {
+		var formattedSkill = HTMLskills.replace(data, bio.skills[i]);
+		$('#skills').append(formattedSkill);
+	}
 }
 
-function displayWork() {
-	for (job in work.jobs) {
+work.display = function() {
+	for (var job in work.jobs) {
 		$('#workExperience').append(HTMLworkStart);
 		var formattedEmployer = HTMLworkEmployer.replace(data, work.jobs[job].employer);
 		var formattedTitle = HTMLworkTitle.replace(data, work.jobs[job].title);
@@ -142,10 +130,10 @@ function displayWork() {
 	}
 }
 
-displayWork();
+work.display();
 
 projects.display = function() {
-	for (project in projects.projects) {
+	for (var project in projects.projects) {
 		$('#projects').append(HTMLprojectStart);
 
 		var formattedTitle = HTMLprojectTitle.replace(data, projects.projects[project].title);
@@ -158,7 +146,7 @@ projects.display = function() {
 		$('.project-entry:last').append(formattedDescription);
 	
 		if (projects.projects[project].images.length > 0) {
-			for (image in projects.projects[project].images) {
+			for (var image in projects.projects[project].images) {
 				var formattedImage = HTMLprojectImage.replace(data, projects.projects[project].images[image]);
 				$('.project-entry:last').append(formattedImage);
 			}
@@ -168,7 +156,7 @@ projects.display = function() {
 
 projects.display();
 
-function displayEducation() {
+education.display = function() {
 	for (school in education.schools) {
 		$('#education').append(HTMLschoolStart);
 		var formattedSchoolName = HTMLschoolName.replace(data, education.schools[school].name);
@@ -181,21 +169,22 @@ function displayEducation() {
 		$('.education-entry:last').append(formattedMajor);
 	}
 }
-function displayCourses() {
+
+education.displayOnlineClasses = function() {
 	$('.education-entry:last').after(HTMLonlineClasses);
-	for (course in education.onlineCourses) {
+	for (var i = 0; i < education.onlineCourses.length; i++) {
 		$('#education').append(HTMLschoolStart);
-		var formattedTitle = HTMLonlineTitle.replace(data, education.onlineCourses[course].title);
+		var formattedTitle = HTMLonlineTitle.replace(data, education.onlineCourses[i].title);
 		$('.education-entry:last').append(formattedTitle);
-		var formattedDates = HTMLonlineDates.replace(data, education.onlineCourses[course].dates);
+		var formattedDates = HTMLonlineDates.replace(data, education.onlineCourses[i].dates);
 		$('.education-entry:last').append(formattedDates);
-		var formattedURL = HTMLonlineURL.replace(data, education.onlineCourses[course].url);
+		var formattedURL = HTMLonlineURL.replace(data, education.onlineCourses[i].url);
 		$('.education-entry:last').append(formattedURL);
 	}
 }
 
-displayEducation();
-displayCourses();
+education.display();
+education.displayOnlineClasses();
 
 function inName(name) {
 	name = name.trim().split(' ');
