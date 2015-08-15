@@ -109,7 +109,15 @@ function initializeMap() {
   */
   map = new google.maps.Map(document.querySelector('#map'), mapOptions);
 
+  map.fitBounds(map.bounds);
 
+  var zoomChangeBoundsListener = google.maps.event.addListenerOnce(map, 'bounds_changed', function(event) {
+    if (this.getZoom()){
+      this.setZoom(4);
+    }
+  });
+
+  setTimeout(function(){google.maps.event.removeListener(zoomChangeBoundsListener)}, 2000);
   
   /*locationFinder(); returns an array of every location string from the JSONs
   written for bio, education, and work.
@@ -235,6 +243,19 @@ window.addEventListener('load', initializeMap);
 //Vanilla JS way to listen for resizing of the window
 //and adjust map bounds
 window.addEventListener('resize', function(e) {
-  //Make sure the map bounds get updated on page resize
-map.fitBounds(mapBounds);
+  map.fitBounds(mapBounds);
+  zoomToMap();
 });
+
+function zoomToMap() {
+  zoomChangeBoundsListener = google.maps.event.addListenerOnce(map, 'bounds_changed', function(event){
+    if (this.getZoom()){
+      this.setZoom(5);
+    }
+  });
+
+
+  setTimeout(function(){google.maps.event.removeListener(zoomChangeBoundsListener)}, 2000);
+  //Make sure the map bounds get updated on page resize
+//map.fitBounds(mapBounds);
+}
