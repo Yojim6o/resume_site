@@ -159,7 +159,8 @@ projects.display();
 education.display = function() {
 	for (school in education.schools) {
 		$('#education').append(HTMLschoolStart);
-		var formattedSchoolName = HTMLschoolName.replace(data, education.schools[school].name);
+		var schoolNameEl = '<a target="_blank" href="'+ education.schools[school].url + '">'+ education.schools[school].name + '</a>';
+		var formattedSchoolName = HTMLschoolName.replace(data, schoolNameEl);
 		$('.education-entry:last').append(formattedSchoolName);
 		var formattedDates = HTMLschoolDates.replace(data, education.schools[school].dates);
 		$('.education-entry:last').append(formattedDates);
