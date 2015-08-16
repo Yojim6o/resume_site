@@ -53,13 +53,13 @@ var education = {
 			'degree': 'HTML, CSS, JavaScript, jQuery, Git',
 			'major': 'CS Workshops',
 			'dates': 2015,
-			'url': 'https://adastraacademy.com'
+			'url': 'http://adastraacademy.com'
 		},
 		{
 			'name': 'Newman University - Bachelors',
 			'city': 'Wichita, KS',
 			'degree': 'BA',
-			'major': ['English'],
+			'major': ['Major: English'],
 			'dates': 2007,
 			'url': 'https://newmanu.edu'
 		}
@@ -69,7 +69,7 @@ var education = {
 			'title': 'Front-End Web Developer Nanodegree',
 			'school': 'Udacity',
 			'dates': 2015,
-			'url': 'http://www.udacity.com/ourse/front-end-web-developer-nanodegree--nd001'
+			'url': 'http://www.udacity.com/course/front-end-web-developer-nanodegree--nd001'
 		}
 	]
 };
@@ -77,18 +77,18 @@ var education = {
 var work = {
 	'jobs': [
 		{
-			'employer': 'Credit Union of America',
-			'title': 'Commercial Services Specialist',
-			'dates': 'January 2007 - Present',
-			'location': 'Wichita, KS',
-			'description': "Assistant relationship lender for the company's commercial loan portfolio. Administrator and credit analyst of all commercial credit facilities."
-		},
-		{
 			'employer': 'S Props LLC',
 			'title': 'Managing Member',
 			'dates': 'April 2009 - Present',
 			'location': 'Wichita, KS',
 			'description': 'I began investing in rental properties as soon as I finished college, and created a business that specializes in multi-unit residential rental properties in the Wichita, KS area.  I regularly engage in negotiations with fellow investors to create scenarios that benefit all parties involved. During my startup phase, I operated the rental units myself by interviewing prospective tenants and managing the day-to-day maintenance requests.  However, I’ve since grown the business to self-sustain by hiring out the management to trusted entities who I’ve personally developed a working relationship with.'
+		},
+		{
+			'employer': 'Credit Union of America',
+			'title': 'Commercial Services Specialist',
+			'dates': 'January 2007 - September 2015',
+			'location': 'Wichita, KS',
+			'description': "Assistant relationship lender for the company's commercial loan portfolio. Administrator and credit analyst of all commercial credit facilities."
 		}
 	]
 };
@@ -159,8 +159,8 @@ projects.display();
 education.display = function() {
 	for (school in education.schools) {
 		$('#education').append(HTMLschoolStart);
-		var schoolNameEl = '<a target="_blank" href="'+ education.schools[school].url + '">'+ education.schools[school].name + '</a>';
-		var formattedSchoolName = HTMLschoolName.replace(data, schoolNameEl);
+		var schoolNameLink = '<a target="_blank" href="'+ education.schools[school].url + '">'+ education.schools[school].name + '</a>';
+		var formattedSchoolName = HTMLschoolName.replace(data, schoolNameLink);
 		$('.education-entry:last').append(formattedSchoolName);
 		var formattedDates = HTMLschoolDates.replace(data, education.schools[school].dates);
 		$('.education-entry:last').append(formattedDates);
@@ -175,12 +175,12 @@ education.displayOnlineClasses = function() {
 	$('.education-entry:last').after(HTMLonlineClasses);
 	for (var i = 0; i < education.onlineCourses.length; i++) {
 		$('#education').append(HTMLschoolStart);
-		var formattedTitle = HTMLonlineTitle.replace(data, education.onlineCourses[i].title);
+		var courseNameLink = '<a target="_blank" href="'+ education.onlineCourses[i].url + '">'+ education.onlineCourses[i].school + " - " + education.onlineCourses[i].title + '</a>';
+		var formattedTitle = HTMLonlineTitle.replace(data, courseNameLink);
 		$('.education-entry:last').append(formattedTitle);
 		var formattedDates = HTMLonlineDates.replace(data, education.onlineCourses[i].dates);
 		$('.education-entry:last').append(formattedDates);
-		var formattedURL = HTMLonlineURL.replace(data, education.onlineCourses[i].url);
-		$('.education-entry:last').append(formattedURL);
+		$('.education-entry:last').append("<br>");
 	}
 }
 
