@@ -5,13 +5,13 @@ var bio = {
 		'mobile': '316-209-4526',
 		'email': 'jgs2017@gmail.com',
 		'github': 'Yojim6o',
-		'blog': '',
-		'twitter': '',
+		'blog': 'yojimbo.space',
+		'twitter': 'Yojim6o',
 		'location': 'Wichita, Kansas'
 	},
-	'welcomeMessage': 'Experienced entrepreneur and financial consultant with a background in commercial lending and real estate investing, with a capability to effectively communicate business solutions to clients and partners.',
+	'welcomeMessage': 'An experienced entrepreneur and financial advisor quickly building a software development skillset. Nine year background in finance and real estate investing and an established capability to communicate simple solutions to clients, co-workers, and business partners. Primarily interested in utilizing these skills in the tech industry and working with other creative engineers to build elegant solutions for formerly difficult processes.',
 	'skills': [
-		'Entrepreneurship', 'Front-End Web Development', 'Financial Consulting', 'Organizational Tools', 'HTML', 'CSS', 'JavaScript', 'jQuery'
+		'JavaScript', 'HTML', 'CSS', 'jQuery', 'Bootstrap', 'Git', 'Github', 'ngrok', 'commercial and consumer banking', 'project management', 'leadership', 'business writing', 'process improvement', 'start-ups'
 	],
 	'bioPic': 'images/profilepic.jpg'
 };
@@ -34,7 +34,7 @@ var formattedTwitter = HTMLtwitter.replace(data, bio.contacts.twitter);
 var formattedGithub = HTMLgithub.replace(data, bio.contacts.github);
 var formattedBlog = HTMLblog.replace(data, bio.contacts.blog);
 var formattedLocation = HTMLlocation.replace(data, bio.contacts.location);
-var contactInfo = formattedMobile + formattedEmail + formattedGithub + formattedLocation;
+var contactInfo = formattedMobile + formattedEmail + formattedTwitter + formattedGithub + formattedBlog + formattedLocation;
 
 $('#topContacts').append(contactInfo);
 $('#footerContacts').append(contactInfo);
@@ -81,14 +81,14 @@ var work = {
 			'title': 'Managing Member',
 			'dates': 'April 2009 - Present',
 			'location': 'Wichita, KS',
-			'description': 'I began investing in rental properties as soon as I finished college, and created a business that specializes in multi-unit residential rental properties in the Wichita, KS area.  I regularly engage in negotiations with fellow investors to create scenarios that benefit all parties involved. During my startup phase, I operated the rental units myself by interviewing prospective tenants and managing the day-to-day maintenance requests.  However, I’ve since grown the business to self-sustain by hiring out the management to trusted entities who I’ve personally developed a working relationship with.'
+			'description': '\u2022 Created a company that owns and operates 7 rental units in the Wichita KS area.<br>\u2022 Maintain rental operations through communication with local property management.<br>\u2022 Provide cost-effective options for Wichita residents while supplying high quality living conditions.<br>\u2022 Frame-working an application that would assist investors in real estate auctions.<br>\u2022 Working with local contractors on a system to streamline repair estimates on homes.'
 		},
 		{
 			'employer': 'Credit Union of America',
 			'title': 'Commercial Services Specialist',
-			'dates': 'January 2007 - September 2015',
+			'dates': 'January 2007 - Present',
 			'location': 'Wichita, KS',
-			'description': "Assistant relationship lender for the company's commercial loan portfolio. Administrator and credit analyst of all commercial credit facilities."
+			'description': "\u2022 Outlined the scope of work and wrote procedures for the commercial loan department.<br>\u2022 Assumed $10 million in loan assets from a merger credit union while assessing and monitoring each loan's risk level.<br>\u2022 Managed projects for improved business deposit account opening.<br>\u2022 Trained front-line staff on commercial banking products."
 		}
 	]
 };
@@ -96,11 +96,19 @@ var work = {
 var projects = {
 	'projects': [
 		{
-			'title': 'Portfolio site',
+			'title': 'Web Optimization',
 			'dates': '2015',
-			'description': 'A website of my work.',
+			'description': "For this project I was tasked with increasing website speed both in load time and overall function.  I used several new tools including browser developer tools, PageSpeed Insights, localhosting and ngrok.",
 			'images': [
-				'images/design-projects.jpg'
+				'images/webop.png'
+			]
+		},
+		{
+			'title': 'Frogger',
+			'dates': '2015',
+			'description': "This was a little fun game I made using Udacity's course material. I made a few unique features. Enemies randomize their speed and which lane they appear in. I also implemented a leveling system by adding a new enemy every time the player reaches the water.",
+			'images': [
+				'images/froggershot.png'
 			]
 		}
 	]
@@ -196,6 +204,6 @@ function inName(name) {
 	return name[0] + ' ' + name[1];
 }
 
-$('#main').append(internationalizeButton);
+//$('#main').append(internationalizeButton);
 
-$('#mapDiv').append(googleMap);
+//$('#mapDiv').append(googleMap);
